@@ -1,0 +1,33 @@
+ID: DEMO5
+_schema-version: '2.0'
+version: 0.0.1
+
+modules:
+ - name: Test12
+   type: html5
+   path: Test12
+   requires:
+    - name: DEMO_JAKO_00-uaa
+ 
+
+ - name: core_db
+   type: hdb
+   path: core_db
+   requires:
+    - name: hdi-container
+
+resources:
+ - name: DEMO_JAKO_00-uaa
+   type: com.sap.xs.uaa-space
+   parameters:
+     config_path: ./xs-security.json       
+    
+
+ - name: hdi-container
+   parameters:
+      config:
+         schema: DEMO_JAKO_00
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container
+
